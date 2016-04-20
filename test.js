@@ -16,7 +16,7 @@ var timeout = process.env.testTimeout || 15000;
 dotest.add ('Module', function (test) {
   test ()
     .isFunction ('fail', 'exports', app)
-    .info ('Timeout config:  ' + timeout)
+    .info ('Timeout:  ' + timeout)
     .done ();
 });
 
