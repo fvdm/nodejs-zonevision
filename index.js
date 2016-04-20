@@ -86,7 +86,7 @@ function sendRequest (hostname, timeout, callback) {
 
   if (typeof timeout === 'function') {
     callback = timeout;
-    timeout: 15000;
+    timeout = 15000;
   }
 
   options.timeout = timeout;
