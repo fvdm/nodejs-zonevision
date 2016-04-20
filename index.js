@@ -36,6 +36,22 @@ function processResponse (err, res, callback) {
     return;
   }
 
+  if (data.error) {
+    error = new Error ('API error');
+    error.statusCode = res.statusCode;
+    error.error = data.error;
+    callback (error);
+    return;
+  }
+
+  if (res.statusCode >= 300) {
+    error = new Error ('API error');
+    error.statusCode = res.statusCode;
+    error.data = data;
+    callback (error);
+    return;
+  }
+
   callback (null, data);
 }
 
