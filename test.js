@@ -26,7 +26,7 @@ dotest.add ('Lookup', function (test) {
     test (err)
       .isObject ('fail', 'data', data)
       .isExactly ('fail', 'data.name', data && data.name, 'github.com')
-      .info (data);
+      .done ();
   });
 });
 
