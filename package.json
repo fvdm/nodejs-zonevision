@@ -1,0 +1,36 @@
+{
+  "name": "zonevision",
+  "version": "1.0.0",
+  "description": "DNS diagnostics with the ZoneVision API (unofficial)",
+  "main": "index.js",
+  "scripts": {
+    "test": "st=0; eslint . || st=1; node test.js || st=1; exit $st"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fvdm/nodejs-zonevision.git"
+  },
+  "keywords": [
+    "ZoneVision",
+    "zone.vision",
+    "dns",
+    "diagnostic",
+    "domain",
+    "domainname",
+    "api",
+    "lookup"
+  ],
+  "author": "Franklin van de Meent <https://frankl.in> (fr@nkl.in)",
+  "license": "Unlicense",
+  "bugs": {
+    "url": "https://github.com/fvdm/nodejs-zonevision/issues"
+  },
+  "homepage": "https://github.com/fvdm/nodejs-zonevision#readme",
+  "devDependencies": {
+    "dotest": "^1.9.0",
+    "eslint": "^2.8.0"
+  },
+  "dependencies": {
+    "httpreq": "^0.4.16"
+  }
+}
