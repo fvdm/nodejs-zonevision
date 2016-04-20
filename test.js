@@ -21,6 +21,42 @@ dotest.add ('Module', function (test) {
 });
 
 
+dotest.add ('Error: invalid hostname', function (test) {
+  app ('', timeout, function (err, data) {
+    test ()
+      .isError ('fail', 'err', err)
+      .isExactly ('fail', 'err.message', err && err.message, 'invalid hostname')
+      .isUndefined ('fail', 'data', data)
+      .done ();
+  });
+});
+
+
+dotest.add ('Error: timeout', function (test) {
+  app ('dnsimple.com', 1, function (err, data) {
+    test ()
+      .isError ('fail', 'err', err)
+      .isExactly ('fail', 'err.code', err && err.code, 'TIMEOUT')
+      .isUndefined ('fail', 'data', data)
+      .done ();
+  });
+});
+
+
+dotest.add ('Error: API error', function (test) {
+  app ('invalid-', timeout, function (err, data) {
+    test ()
+      .isError ('fail', 'err', err)
+      .isExactly ('fail', 'err.message', err && err.message, 'API error')
+      .isNumber ('fail', 'err.statusCode', err && err.statusCode)
+      .isCondition ('fail', 'err.statusCode', err && err.statusCode, '>=', 300)
+      .isExactly ('warn', 'err.error', err && err.error, 'Domain not found')
+      .isUndefined ('fail', 'data', data)
+      .done ();
+  });
+});
+
+
 dotest.add ('Lookup', function (test) {
   app ('github.com', timeout, function (err, data) {
     test (err)
