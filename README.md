@@ -4,7 +4,7 @@ zonevision
 Unofficial Node.js module for DNS diagnotiscs with the ZoneVision API.
 
 [![Build Status](https://travis-ci.org/fvdm/nodejs-zonevision.svg?branch=master)](https://travis-ci.org/fvdm/nodejs-zonevision)
-[![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-zonevision.svg)](https://gemnasium.com/github.com/fvdm/nodejs-zonevision)
+[![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-zonevision.svg)](https://gemnasium.com/github.com/fvdm/nodejs-zonevision#runtime-dependencies)
 
 
 * [Node.js](https://nodejs.org)
