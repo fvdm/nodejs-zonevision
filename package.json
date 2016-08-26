@@ -7,7 +7,7 @@
     "node": "4.0.0"
   },
   "scripts": {
-    "test": "st=0; eslint . || st=1; node test.js || st=1; exit $st"
+    "test": "dotest"
   },
   "repository": {
     "type": "git",
@@ -30,8 +30,7 @@
   },
   "homepage": "https://github.com/fvdm/nodejs-zonevision#readme",
   "devDependencies": {
-    "dotest": "^1.12.4",
-    "eslint": "^3.0.1"
+    "dotest": "^1.12.4"
   },
   "dependencies": {
     "httpreq": "^0.4.22"
