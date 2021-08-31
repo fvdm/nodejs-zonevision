@@ -22,7 +22,6 @@ module.exports = async ({
   zone,
   timeout = 5000,
 }) => {
-  let data;
   const options = {
     url: `https://api.zone.vision/${zone}`,
     method: 'GET',
@@ -34,13 +33,7 @@ module.exports = async ({
   };
 
   const res = await doRequest (options);
-
-  try {
-    data = JSON.parse (res.body);
-  }
-  catch (err) {
-    throw err;
-  }
+  const data = JSON.parse (res.body);
 
   if (data.error) {
     const error = new Error (data.error);
