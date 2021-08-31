@@ -60,7 +60,7 @@ dotest.add ('Error: API error', async test => {
 
   test ()
     .isError ('fail', 'error', error)
-    .isExactly ('fail', 'error.message', error && error.message, 'Domain not found')
+    .isExactly ('fail', 'error.message', error && error.message, 'Name not found')
     .isNumber ('fail', 'error.statusCode', error && error.statusCode)
     .isCondition ('fail', 'error.statusCode', error && error.statusCode, '>=', 300)
     .isUndefined ('fail', 'data', data)
