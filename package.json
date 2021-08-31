@@ -1,6 +1,6 @@
 {
   "name": "zonevision",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "DNS diagnostics with the ZoneVision API (unofficial)",
   "main": "index.js",
   "engines": {
