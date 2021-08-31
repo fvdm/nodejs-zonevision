@@ -22,6 +22,7 @@ module.exports = async ({
   zone,
   timeout = 5000,
 }) => {
+  let data;
   const options = {
     url: `https://api.zone.vision/${zone}`,
     method: 'GET',
@@ -33,7 +34,6 @@ module.exports = async ({
   };
 
   const res = await doRequest (options);
-  let data;
 
   try {
     data = JSON.parse (res.body);
