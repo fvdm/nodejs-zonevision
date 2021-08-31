@@ -17,7 +17,7 @@ Usage
 ```js
 const zonevision = require ('zonevision');
 
-zonevision ('dnsimple.com')
+zonevision ({ zone: 'dnsimple.com' })
   .then (console.log)
   .catch (console.error)
 ;
@@ -39,7 +39,10 @@ with the optional second argument. The value is in ms, 1000 = 1 sec.
 
 ```js
 // Set timeout to 5 seconds
-zonevision ('dnsimple.com', 5000);
+zonevision ({
+  zone: 'dnsimple.com',
+  timeout: 5000,
+});
 ```
 
 
