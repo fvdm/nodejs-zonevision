@@ -10,14 +10,29 @@ const { doRequest } = require ('httpreq');
 
 
 /**
- * Process API response
+ * Send API call
  *
- * @param   {object}  res  Response details
+ * @param   {string}  zone            Hostname to lookup
+ * @param   {number}  [timeout=5000]  Request time out in ms
  *
  * @return  {Promise<object>}
  */
 
-async function processResponse (res) {
+module.exports = async ({
+  zone,
+  timeout = 5000,
+}) => {
+  const options = {
+    url: `https://api.zone.vision/${zone}`,
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'User-Agent': 'zonevision.js (https://github.com/fvdm/nodejs-zonevision)',
+    },
+    timeout,
+  };
+
+  const res = await doRequest (options);
   let data;
 
   try {
@@ -34,42 +49,5 @@ async function processResponse (res) {
     throw error;
   }
 
-  if (res.statusCode >= 300) {
-    const error = new Error ('API error');
-
-    error.statusCode = res.statusCode;
-    error.data = data;
-    throw error;
-  }
-
   return data;
-}
-
-
-/**
- * Send API call
- *
- * @param   {string}  zone            Hostname to lookup
- * @param   {number}  [timeout=5000]  Request time out in ms
- *
- * @return  {Promise<object>}
- */
-
-module.exports = async function sendRequest ({
-  zone,
-  timeout = 5000,
-}) {
-  const options = {
-    url: `https://api.zone.vision/${zone}`,
-    method: 'GET',
-    headers: {
-      'Accept': 'application/json',
-      'User-Agent': 'zonevision.js (https://github.com/fvdm/nodejs-zonevision)',
-    },
-    timeout,
-  };
-
-  return doRequest (options)
-    .then (processResponse)
-  ;
 };
