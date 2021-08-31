@@ -51,7 +51,6 @@ dotest.add ('Error: API error', async test => {
   try {
     data = await app ({
       zone: 'invalid-',
-      timeout,
     });
   }
   catch (err) {
