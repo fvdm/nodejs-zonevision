@@ -3,7 +3,6 @@ zonevision
 
 Unofficial Node.js module for DNS diagnostics with the ZoneVision API.
 
-
 [![Changelog](https://img.shields.io/npm/v/zonevision.svg?maxAge=3600)](https://github.com/fvdm/nodejs-zonevision/blob/master/CHANGELOG.md)
 [![Build Status](https://github.com/fvdm/nodejs-zonevision/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/fvdm/nodejs-zonevision/actions/workflows/node.js.yml)
 [![Coverage Status](https://coveralls.io/repos/github/fvdm/nodejs-zonevision/badge.svg?branch=master)](https://coveralls.io/github/fvdm/nodejs-zonevision?branch=master)
@@ -16,16 +15,12 @@ Usage
 -----
 
 ```js
-var zonevision = require ('zonevision');
+const zonevision = require ('zonevision');
 
-zonevision ('dnsimple.com', function (err, data) {
-  if (err) {
-    console.log (err);
-    return;
-  }
-
-  console.log (data);
-});
+zonevision ('dnsimple.com')
+  .then (console.log)
+  .catch (console.error)
+;
 ```
 
 
@@ -44,7 +39,7 @@ with the optional second argument. The value is in ms, 1000 = 1 sec.
 
 ```js
 // Set timeout to 5 seconds
-zonevision ('dnsimple.com', 5000, processResponse);
+zonevision ('dnsimple.com', 5000);
 ```
 
 
@@ -74,10 +69,11 @@ OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
 ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
 OTHER DEALINGS IN THE SOFTWARE.
 
-For more information, please refer to <http://unlicense.org>
+For more information, please refer to <https://unlicense.org>
 
 
 Author
 ------
 
-
+[Franklin](https://fvdm.com)
+| [Buy me a coffee](https://fvdm.com/donating )

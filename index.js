@@ -6,98 +6,77 @@ Source:       https://github.com/fvdm/nodejs-zonevision
 License:      Unlicense (Public Domain, see LICENSE file)
 */
 
-var httpreq = require ('httpreq');
+const { doRequest } = require ('httpreq');
 
 
 /**
  * Process API response
  *
- * @callback callback
- * @param err {Error, null} - Error
- * @param res {object} - Response details
- * @param callback {function} - `function (err, data) {}`
- * @returns {void}
+ * @param   {object}  res  Response details
+ *
+ * @return  {Promise<object>}
  */
 
-function processResponse (err, res, callback) {
-  var data = res && res.body || '';
-  var error = null;
-
-  if (err) {
-    callback (err);
-    return;
-  }
+async function processResponse (res) {
+  let data;
 
   try {
-    data = JSON.parse (data);
-  } catch (e) {
-    callback (e);
-    return;
+    data = JSON.parse (res.body);
+  }
+  catch (err) {
+    throw err;
   }
 
   if (data.error) {
-    error = new Error ('API error');
+    const error = new Error (data.error);
+
     error.statusCode = res.statusCode;
-    error.error = data.error;
-    callback (error);
-    return;
+    throw error;
   }
 
   if (res.statusCode >= 300) {
-    error = new Error ('API error');
+    const error = new Error ('API error');
+
     error.statusCode = res.statusCode;
     error.data = data;
-    callback (error);
-    return;
+    throw error;
   }
 
-  callback (null, data);
+  return data;
 }
 
 
 /**
  * Send API call
  *
- * @callback callback
- * @param hostname {string} - Hostname to lookup
- * @param [timeout=15000] - Request time out in ms, 1000 = 1 second
- * @param callback {function} - `function (err, data) {}`
+ * @param   {string}  zone            Hostname to lookup
+ * @param   {number}  [timeout=5000]  Request time out in ms
+ *
+ * @return  {Promise<object>}
  */
 
-function sendRequest (hostname, timeout, callback) {
-  var error = null;
+modules.exports = async function sendRequest ({
+  zone,
+  timeout = 5000,
+}) {
+  if (typeof zone !== 'string') {
+    const error = new Error ('invalid hostname');
 
-  var options = {
-    url: 'https://api.zone.vision/' + hostname,
+    error.zone = zone;
+    throw error;
+  }
+
+  const options = {
+    url: `https://api.zone.vision/${zone}`,
     method: 'GET',
     headers: {
       'Accept': 'application/json',
       'User-Agent': 'zonevision.js (https://github.com/fvdm/nodejs-zonevision)'
-    }
+    },
+    timeout,
   };
 
-  if (!hostname || typeof hostname !== 'string') {
-    error = new Error ('invalid hostname');
-    error.hostname = hostname;
-    callback (error);
-    return;
-  }
-
-  if (typeof timeout === 'function') {
-    callback = timeout;
-    timeout = 15000;
-  }
-
-  options.timeout = timeout;
-
-  httpreq.doRequest (options, function (err, res) {
-    processResponse (err, res, callback);
-  });
-}
-
-
-/**
- * Module interface
- */
-
-module.exports = sendRequest;
+  return doRequest (options)
+    .then (processResponse)
+  ;
+};

@@ -6,63 +6,107 @@ Source:       https://github.com/fvdm/nodejs-zonevision
 License:      Unlicense (Public Domain, see LICENSE file)
 */
 
-var dotest = require ('dotest');
-var app = require ('./');
+const dotest = require ('dotest');
+const app = require ('./');
 
-var timeout = process.env.testTimeout || 15000;
+const timeout = process.env.testTimeout || 5000;
 
 
-dotest.add ('Module', function (test) {
+dotest.add ('Module', async test => {
   test ()
     .isFunction ('fail', 'exports', app)
-    .info ('Timeout:  ' + timeout)
-    .done ();
+    .info (`Timeout: ${timeout}`)
+    .done ()
+  ;
 });
 
 
-dotest.add ('Error: invalid hostname', function (test) {
-  app ('', timeout, function (err, data) {
+dotest.add ('Error: invalid hostname', async test => {
+  let data;
+  let error;
+
+  try {
+    data = await app ({
+      zone: '',
+    });
+  }
+  catch (err) {
+    error = error;
+  }
+
+  test ()
+    .isError ('fail', 'error', error)
+    .isExactly ('fail', 'error.message', error && error.message, 'invalid hostname')
+    .isUndefined ('fail', 'data', data)
+    .done ()
+  ;
+});
+
+
+dotest.add ('Error: timeout', async test => {
+  let data;
+  let error;
+
+  try {
+    data = await app ({
+      zone: 'dnsimple.com',
+      timeout: 1,
+    });
+  }
+  catch (err) {
+    error = err;
+  }
+
+  test ()
+    .isError ('fail', 'error', error)
+    .isExactly ('fail', 'error.code', error && error.code, 'TIMEOUT')
+    .isUndefined ('fail', 'data', data)
+    .done ()
+  ;
+});
+
+
+dotest.add ('Error: API error', async test => {
+  let data;
+  let error;
+
+  try {
+    data = await app ({
+      zone: 'invalid-',
+      timeout,
+    });
+  }
+  catch (err) {
+    error = err;
+  }
+
+  test ()
+    .isError ('fail', 'error', error)
+    .isExactly ('fail', 'error.message', error && error.message, 'Domain not found')
+    .isNumber ('fail', 'error.statusCode', error && error.statusCode)
+    .isCondition ('fail', 'error.statusCode', error && error.statusCode, '>=', 300)
+    .isUndefined ('fail', 'data', data)
+    .done ()
+  ;
+});
+
+
+dotest.add ('Lookup', async test => {
+  try {
+    const data = await app ({
+      zone: 'github.com',
+      timeout,
+    });
+    
     test ()
-      .isError ('fail', 'err', err)
-      .isExactly ('fail', 'err.message', err && err.message, 'invalid hostname')
-      .isUndefined ('fail', 'data', data)
-      .done ();
-  });
-});
-
-
-dotest.add ('Error: timeout', function (test) {
-  app ('dnsimple.com', 1, function (err, data) {
-    test ()
-      .isError ('fail', 'err', err)
-      .isExactly ('fail', 'err.code', err && err.code, 'TIMEOUT')
-      .isUndefined ('fail', 'data', data)
-      .done ();
-  });
-});
-
-
-dotest.add ('Error: API error', function (test) {
-  app ('invalid-', timeout, function (err, data) {
-    test ()
-      .isError ('fail', 'err', err)
-      .isExactly ('fail', 'err.message', err && err.message, 'API error')
-      .isNumber ('fail', 'err.statusCode', err && err.statusCode)
-      .isCondition ('fail', 'err.statusCode', err && err.statusCode, '>=', 300)
-      .isExactly ('warn', 'err.error', err && err.error, 'Domain not found')
-      .isUndefined ('fail', 'data', data)
-      .done ();
-  });
-});
-
-
-dotest.add ('Lookup', function (test) {
-  app ('github.com', timeout, function (err, data) {
-    test (err)
       .isObject ('fail', 'data', data)
       .isExactly ('fail', 'data.name', data && data.name, 'github.com')
-      .done ();
-  });
+      .done ()
+    ;
+  }
+  catch (err) {
+    test (err).done();
+  }
 });
 
 
