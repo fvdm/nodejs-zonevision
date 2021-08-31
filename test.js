@@ -21,28 +21,6 @@ dotest.add ('Module', async test => {
 });
 
 
-dotest.add ('Error: invalid hostname', async test => {
-  let data;
-  let error;
-
-  try {
-    data = await app ({
-      zone: '',
-    });
-  }
-  catch (err) {
-    error = error;
-  }
-
-  test ()
-    .isError ('fail', 'error', error)
-    .isExactly ('fail', 'error.message', error && error.message, 'invalid hostname')
-    .isUndefined ('fail', 'data', data)
-    .done ()
-  ;
-});
-
-
 dotest.add ('Error: timeout', async test => {
   let data;
   let error;

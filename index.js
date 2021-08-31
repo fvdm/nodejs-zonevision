@@ -59,13 +59,6 @@ module.exports = async function sendRequest ({
   zone,
   timeout = 5000,
 }) {
-  if (typeof zone !== 'string') {
-    const error = new Error ('invalid hostname');
-
-    error.zone = zone;
-    throw error;
-  }
-
   const options = {
     url: `https://api.zone.vision/${zone}`,
     method: 'GET',
