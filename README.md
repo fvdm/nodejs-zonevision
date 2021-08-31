@@ -3,14 +3,12 @@ zonevision
 
 Unofficial Node.js module for DNS diagnostics with the ZoneVision API.
 
-[![npm](https://img.shields.io/npm/v/zonevision.svg?maxAge=3600)](https://github.com/fvdm/nodejs-zonevision/blob/master/CHANGELOG.md)
-[![Dependency Status](https://gemnasium.com/badges/github.com/fvdm/nodejs-zonevision.svg)](https://gemnasium.com/github.com/fvdm/nodejs-zonevision#runtime-dependencies)
-[![Greenkeeper badge](https://badges.greenkeeper.io/fvdm/nodejs-zonevision.svg)](https://greenkeeper.io/)
 
+[![Changelog](https://img.shields.io/npm/v/zonevision.svg?maxAge=3600)](https://github.com/fvdm/nodejs-zonevision/blob/master/CHANGELOG.md)
 [![Build Status](https://github.com/fvdm/nodejs-zonevision/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/fvdm/nodejs-zonevision/actions/workflows/node.js.yml)
+[![Coverage Status](https://coveralls.io/repos/github/fvdm/nodejs-zonevision/badge.svg?branch=master)](https://coveralls.io/github/fvdm/nodejs-zonevision?branch=master)
 
 * [Node.js](https://nodejs.org)
-* [ZoneVision](http://zone.vision)
 * [API documentation](https://api.zone.vision)
 
 
@@ -82,6 +80,4 @@ For more information, please refer to <http://unlicense.org>
 Author
 ------
 
-[Franklin van de Meent](https://frankl.in)
 
-[![Buy me a coffee](https://frankl.in/u/kofi/kofi-readme.png)](https://ko-fi.com/franklin)

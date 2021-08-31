@@ -1,9 +1,8 @@
 /*
 Name:         zonevision
 Description:  ZoneVision API access (unofficial)
-Author:       Franklin van de Meent (https://frankl.in)
+Author:       Franklin (https://fvdm.com)
 Source:       https://github.com/fvdm/nodejs-zonevision
-Contact:      https://github.com/fvdm/nodejs-zonevision/issues
 License:      Unlicense (Public Domain, see LICENSE file)
 */
 
