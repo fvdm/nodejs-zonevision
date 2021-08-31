@@ -55,7 +55,7 @@ async function processResponse (res) {
  * @return  {Promise<object>}
  */
 
-modules.exports = async function sendRequest ({
+module.exports = async function sendRequest ({
   zone,
   timeout = 5000,
 }) {
