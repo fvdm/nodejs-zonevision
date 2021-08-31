@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/fvdm/nodejs-zonevision#readme",
   "devDependencies": {
-    "dotest": "^2.9.1"
+    "dotest": "^2.9.0"
   },
   "dependencies": {
     "httpreq": "^0.5.1"
