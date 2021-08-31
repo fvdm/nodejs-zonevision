@@ -4,7 +4,7 @@
   "description": "DNS diagnostics with the ZoneVision API (unofficial)",
   "main": "index.js",
   "engines": {
-    "node": "4.0.0"
+    "node": ">=12"
   },
   "scripts": {
     "test": "dotest"
@@ -30,7 +30,7 @@
   },
   "homepage": "https://github.com/fvdm/nodejs-zonevision#readme",
   "devDependencies": {
-    "dotest": "^2.3.0"
+    "dotest": "^2.9.1"
   },
   "dependencies": {
     "httpreq": "^0.5.1"
