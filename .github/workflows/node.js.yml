@@ -35,8 +35,7 @@ jobs:
       - run: npm install
       - run: npm test
         env:
-          NS_APIKEY: ${{ secrets.NS_APIKEY }}
-          NS_TIMEOUT: ${{ secrets.NS_TIMEOUT }}
+          testTimeout: ${{ secrets.testTimeout }}
           DOTEST_NOCOV: ${{ secrets.DOTEST_NOCOV }}
       - run: npm audit --production
       - name: Coveralls Parallel
