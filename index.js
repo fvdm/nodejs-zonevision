@@ -71,7 +71,7 @@ module.exports = async function sendRequest ({
     method: 'GET',
     headers: {
       'Accept': 'application/json',
-      'User-Agent': 'zonevision.js (https://github.com/fvdm/nodejs-zonevision)'
+      'User-Agent': 'zonevision.js (https://github.com/fvdm/nodejs-zonevision)',
     },
     timeout,
   };

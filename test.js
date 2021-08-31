@@ -97,7 +97,7 @@ dotest.add ('Lookup', async test => {
       zone: 'github.com',
       timeout,
     });
-    
+
     test ()
       .isObject ('fail', 'data', data)
       .isExactly ('fail', 'data.name', data && data.name, 'github.com')
