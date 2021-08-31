@@ -12,8 +12,9 @@ const { doRequest } = require ('httpreq');
 /**
  * Send API call
  *
- * @param   {string}  zone            Hostname to lookup
- * @param   {number}  [timeout=5000]  Request time out in ms
+ * @param   {object}  args
+ * @param   {string}  args.zone            Hostname to lookup
+ * @param   {number}  [args.timeout=5000]  Request time out in ms
  *
  * @return  {Promise<object>}
  */
