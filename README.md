@@ -1,7 +1,8 @@
 zonevision
 ==========
 
-Unofficial Node.js module for DNS diagnostics with the ZoneVision API.
+Unofficial Node.js module for DNS diagnostics
+with the [DNSimple](https://dnsimple.com) ZoneVision API.
 
 [![Changelog](https://img.shields.io/npm/v/zonevision.svg?maxAge=3600)](https://github.com/fvdm/nodejs-zonevision/blob/master/CHANGELOG.md)
 [![Build Status](https://github.com/fvdm/nodejs-zonevision/actions/workflows/node.js.yml/badge.svg?branch=master)](https://github.com/fvdm/nodejs-zonevision/actions/workflows/node.js.yml)
@@ -18,7 +19,10 @@ Usage
 const zonevision = require ('zonevision');
 
 zonevision ({ zone: 'dnsimple.com' })
-  .then (console.log)
+  .then (data => console.dir (data, {
+    depth: null,
+    colors: true,
+  })
   .catch (console.error)
 ;
 ```
@@ -33,8 +37,9 @@ Installation
 Configuration
 -------------
 
-You can override the default 15 seconds `timeout` per request
-with the optional second argument. The value is in ms, 1000 = 1 sec.
+param     | type   | default | description
+:---------|:-------|:--------|:-----------
+[timeout] | number | `15000` | Request timeout in ms
 
 
 ```js
@@ -80,3 +85,4 @@ Author
 
 [Franklin](https://fvdm.com)
 | [Buy me a coffee](https://fvdm.com/donating )
+
