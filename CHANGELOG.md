@@ -1,3 +1,10 @@
+#### 2.0.2 (2021-10-06)
+
+##### Chores
+
+* **package:**  Update dependencies ([c1acb29b](https://github.com/fvdm/nodejs-zonevision/commit/c1acb29bf6918bca1f57b30fe918412b77d17350))
+* **dev:**  Clean up ignored files ([78c6ac86](https://github.com/fvdm/nodejs-zonevision/commit/78c6ac86bc21e947597c9cb41a7e9f0867eaa624))
+
 #### 2.0.1 (2021-10-06)
 
 ##### Chores
