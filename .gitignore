@@ -1,27 +1,16 @@
-# Logs
 logs
 *.log
 .*_history
 npm-debug.log*
-
-# Runtime
+package-lock.json
+node_modules
+.npm
 pids
 *.pid
 *.seed
-
-# Test
 lib-cov
 coverage
 .grunt
 .lock-wscript
-.nyc_output
-
-# Compile
 build/Release
-
-# Dependencies
-node_modules
-.npm
-.node_repl_history
-.package.json
-package-lock.json
+.nyc_output

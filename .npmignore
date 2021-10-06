@@ -1,0 +1,3 @@
+# Exclude dot-files and tests from package
+.*
+test.js
