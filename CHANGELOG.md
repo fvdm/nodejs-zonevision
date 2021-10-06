@@ -1,3 +1,18 @@
+#### 2.0.1 (2021-10-06)
+
+##### Chores
+
+* **ci:**  Added Dependabot config ([b3dd5004](https://github.com/fvdm/nodejs-zonevision/commit/b3dd5004c471065f497ae1e41eae5a33137ed19d))
+
+##### Documentation Changes
+
+*  Minor edits ([1368ceeb](https://github.com/fvdm/nodejs-zonevision/commit/1368ceebc646ba26050c209d6249cf008bc0bc93))
+
+##### Tests
+
+* **config:**  Modern ESLint config ([89dce2b5](https://github.com/fvdm/nodejs-zonevision/commit/89dce2b57f8afdd00d3bec694396bd86c2177352))
+* **ci:**  Updated Github action ([c0d4f236](https://github.com/fvdm/nodejs-zonevision/commit/c0d4f236d870e9cbb26293ff1565921dc0e0e96c))
+
 ## 2.0.0 (2021-08-31)
 
 ##### Breaking Changes
