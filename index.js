@@ -6,8 +6,6 @@ Source:       https://github.com/fvdm/nodejs-zonevision
 License:      Unlicense (Public Domain, see LICENSE file)
 */
 
-const { doRequest } = require ('httpreq');
-
 
 /**
  * Send API call
