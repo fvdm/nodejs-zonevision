@@ -23,23 +23,23 @@ module.exports = async ({
   zone,
   timeout = 5000,
 }) => {
+  const url = `https://api.zone.vision/${zone}`;
   const options = {
-    url: `https://api.zone.vision/${zone}`,
     method: 'GET',
     headers: {
       'Accept': 'application/json',
       'User-Agent': 'zonevision.js (https://github.com/fvdm/nodejs-zonevision)',
     },
-    timeout,
+    signal: AbortSignal.timeout (timeout),
   };
 
-  const res = await doRequest (options);
-  const data = JSON.parse (res.body);
+  const res = await fetch (url, options);
+  const data = await res.json();
 
   if (data.error) {
     const error = new Error (data.error);
 
-    error.statusCode = res.statusCode;
+    error.statusCode = res.status;
     throw error;
   }
 
