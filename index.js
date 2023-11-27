@@ -26,7 +26,7 @@ module.exports = async ({
     method: 'GET',
     headers: {
       'Accept': 'application/json',
-      'User-Agent': 'zonevision.js (https://github.com/fvdm/nodejs-zonevision)',
+      'User-Agent': 'fvdm/nodejs-zonevision',
     },
     signal: AbortSignal.timeout (timeout),
   };
